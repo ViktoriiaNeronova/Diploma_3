@@ -43,13 +43,7 @@ public class BaseTest {
 
 //        ChromeOptions options = new ChromeOptions(); //Драйвер для браузера
 //        options.addArguments("--remote-allow-origins=*", "--no-sandbox", "--headless", "--disable-dev-shm-usage");
-//        driver = new ChromeDriver(options);
-
-//        WebDriverManager.firefoxdriver().driverVersion("0.31.0").setup();
-//        FirefoxOptions options = new FirefoxOptions();
-//        options.addArguments("--headless");
-//        driver = new FirefoxDriver(options);
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//        driver = new ChromeDriver(options);s
 
         System.setProperty("webdriver.chrome.driver",System.getenv("YANDEX_BROWSER_DRIVER_FILENAME"));
         ChromeOptions options = new ChromeOptions();
