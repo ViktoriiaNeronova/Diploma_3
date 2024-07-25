@@ -11,6 +11,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.html5.WebStorage;
 
 import java.time.Duration;
@@ -39,10 +41,24 @@ public class BaseTest {
     public static void startUp() {
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/api";
 
-        ChromeOptions options = new ChromeOptions(); //Драйвер для браузера
+//        ChromeOptions options = new ChromeOptions(); //Драйвер для браузера
+//        options.addArguments("--remote-allow-origins=*", "--no-sandbox", "--headless", "--disable-dev-shm-usage");
+//        driver = new ChromeDriver(options);
+
+//        WebDriverManager.firefoxdriver().driverVersion("0.31.0").setup();
+//        FirefoxOptions options = new FirefoxOptions();
+//        options.addArguments("--headless");
+//        driver = new FirefoxDriver(options);
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        System.setProperty("webdriver.chrome.driver",System.getenv("YANDEX_BROWSER_DRIVER_FILENAME"));
+        ChromeOptions options = new ChromeOptions();
+        options.setBinary(System.getenv("YANDEX_BROWSER_PATH"));
         options.addArguments("--remote-allow-origins=*", "--no-sandbox", "--headless", "--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1024, 768));
     }
 
     @AfterClass
