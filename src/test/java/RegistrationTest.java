@@ -35,8 +35,8 @@ public class RegistrationTest extends BaseTest {
                 .setPassword(user.getPassword());
         registrationPage.registrationButtonClick();
 
-        assertTrue(loginPage.isLoginPage());
         loginAndDeleteUser(user);
+        assertTrue(loginPage.isLoginPage());
     }
 
     @DisplayName("Ошибка для некорректного пароля. Минимальный пароль — шесть символов.")
